@@ -1,0 +1,309 @@
+<mvc:View controllerName="zrecoadresfield.controller.Worklist"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+    xmlns:ui="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+	xmlns:sf="sap.ui.layout.form" height="100%">
+    <f:DynamicPage fitContent="true" showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>worklistViewTitle}" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                	<sf:SimpleForm
+                        editable="true"
+                        layout="ColumnLayout"
+                        title=""
+                        columnsM="3"
+                        columnsL="4"
+                        columnsXL="4">
+                        <sf:content>
+                            <Label text="{i18n>IV_HESAP_TUR}"  required="true" />
+                            <Select selectedKey="{viewModel>/IV_HESAP_TUR}" items="{ path: '/accountTypeVH', templateShareable: true }" 
+							 change="onHesapTurChange" 
+							forceSelection="false">
+							<core:Item key="{Value}" text="{Description}"/>
+							</Select>
+                            <Label text="{i18n>KUNNR_NAME}" required="true" />
+                            <Input value="{viewModel>/KUNNR_NAME}" description="{viewModel>/KUNNR_NAME_DESC}" showValueHelp="true" valueHelpRequest="onVHReqHesapNo" change="onHesapNoChange" visible="{= ${viewModel>/IV_HESAP_TUR} === 'M' ? true : false }" />
+                             <Label text="{i18n>LIFNR_NAME}" />
+                            <Input value="{viewModel>/LIFNR_NAME}" description="{viewModel>/LIFNR_NAME_DESC}" showValueHelp="true" valueHelpRequest="onVHReqHesapNo" change="onHesapNoChange" visible="{= ${viewModel>/IV_HESAP_TUR} === 'S' ? true : false }" />
+                        </sf:content>
+                    </sf:SimpleForm>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <!-- <VBox> -->
+		<sf:SimpleForm editable="true" layout="ResponsiveGridLayout" columnsM="1" columnsL="1" columnsXL="1" title="">
+			<sf:content>
+             <core:Title text="{i18n>adresAlanlari}" />
+				<Label text="{i18n>NAME1}" />
+				<Input value="{viewModel>/f/ADRC/NAME1}" editable="false"  width="750px"/>
+
+                <Label text="{i18n>NAME2}" />
+				<Input value="{viewModel>/f/ADRC/NAME2}" editable="false"  />
+                <Select selectedKey="{viewModel>/f/ADRC_RADIO/NAME2_USE}" forceSelection="false">
+				 <core:Item key="X" text="{i18n>adresKullan}"/>
+				 <core:Item key="" text="{i18n>unvanKullan}"/>
+                	<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+                </Select>
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/NAME2_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+                <Label text="{i18n>NAME3}" />
+				<Input value="{viewModel>/f/ADRC/NAME3}" editable="false"  />
+                <Select selectedKey="{viewModel>/f/ADRC_RADIO/NAME3_USE}" forceSelection="false">
+				 <core:Item key="X" text="{i18n>adresKullan}"/>
+				 <core:Item key="" text="{i18n>unvanKullan}"/>
+                	<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+                </Select>
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/NAME3_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+                <Label text="{i18n>NAME4}" />
+				<Input value="{viewModel>/f/ADRC/NAME4}" editable="false"  />
+                <Select selectedKey="{viewModel>/f/ADRC_RADIO/NAME4_USE}" forceSelection="false">
+				 <core:Item key="X" text="{i18n>adresKullan}"/>
+				 <core:Item key="" text="{i18n>unvanKullan}"/>
+                	<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+                </Select>
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/NAME4_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>STREET}" />
+				<Input value="{viewModel>/f/ADRC/STREET}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/STREET_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>STR_SUPPL1}" />
+				<Input value="{viewModel>/f/ADRC/STR_SUPPL1}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/STR_SUPPL1_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>STR_SUPPL2}" />
+				<Input value="{viewModel>/f/ADRC/STR_SUPPL2}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/STR_SUPPL2_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>STR_SUPPL3}" />
+				<Input value="{viewModel>/f/ADRC/STR_SUPPL3}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/STR_SUPPL3_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>LOCATION}" />
+				<Input value="{viewModel>/f/ADRC/LOCATION}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/LOCATION_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>BUILDING}" />
+				<Input value="{viewModel>/f/ADRC/BUILDING}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/BUILDING_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>ROOMNUMBER}" />
+				<Input value="{viewModel>/f/ADRC/ROOMNUMBER}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/ROOMNUMBER_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>FLOOR}" />
+				<Input value="{viewModel>/f/ADRC/FLOOR}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/FLOOR_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>NAME_CO}" />
+				<Input value="{viewModel>/f/ADRC/NAME_CO}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/NAME_CO_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>HOUSE_NUM1}" />
+				<Input value="{viewModel>/f/ADRC/HOUSE_NUM1}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/HOUSE_NUM1_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>HOUSE_NUM2}" />
+				<Input value="{viewModel>/f/ADRC/HOUSE_NUM2}" editable="false"  />
+				<RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/HOUSE_NUM2_X}">
+					<RadioButton text="{i18n>formdaGoster}"  />
+					<RadioButton text="{i18n>formdaGizle}"  />
+					<layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+				</RadioButtonGroup>
+				<Label text="{i18n>CITY2}" />
+				<Input value="{viewModel>/f/ADRC/CITY2}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/CITY2_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>HOME_CITY}" />
+				<Input value="{viewModel>/f/ADRC/HOME_CITY}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/HOME_CITY_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>POST_CODE1}" />
+				<Input value="{viewModel>/f/ADRC/POST_CODE1}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/POST_CODE1_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>CITY1}" />
+				<Input value="{viewModel>/f/ADRC/CITY1}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/CITY1_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>COUNTRY}" />
+				<Input value="{viewModel>/f/ADRC/COUNTRY}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/COUNTRY_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>REGION}" />
+				<Input value="{viewModel>/f/ADRC/REGION}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/REGION_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+			 <core:Title text="{i18n>iletisimBilgi}" />
+				<Label text="{i18n>TELF1}" />
+				<Input value="{viewModel>/f/TELF1}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/TELF1_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>TELF2}" />
+				<Input value="{viewModel>/f/TELF2}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/TELF2_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>TELFX}" />
+				<Input value="{viewModel>/f/TELFX}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/TELFX_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+			 <core:Title text="{i18n>denetimVeri}" />
+				<Label text="{i18n>TAX_OFFICE}" />
+				<Input value="{viewModel>/f/TAX_OFFICE}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/TAX_OFFICE_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+				<Label text="{i18n>TAX_NUMBER}" />
+				<Input value="{viewModel>/f/TAX_NUMBER}" editable="false"  />
+                <RadioButtonGroup columns="2" selectedIndex="{viewModel>/f/ADRC_RADIO/TAX_NUMBER_X}">
+			        <RadioButton text="{i18n>formdaGoster}"  />
+			         <RadioButton text="{i18n>formdaGizle}"  />
+                    <layoutData>
+						<sf:ColumnElementData cellsSmall="4" cellsLarge="4" />
+					</layoutData>
+		        </RadioButtonGroup>
+			</sf:content>
+		</sf:SimpleForm>
+            <!-- </VBox> -->
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://paper-plane" type="Accept" press="onSave" text="{i18n>btnSave}"/>
+                <Button icon="sap-icon://eraser" type="Reject" press="onClear" text="{i18n>btnClear}"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,135 @@
+{
+  "_version": "1.64.0",
+  "sap.app": {
+    "id": "zrecoadresfield",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.16.2",
+      "toolsId": "bdc1982d-8b77-4c63-9d1c-655eec1a52bb"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZRECO_B_SEARCH_HELP/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZRECO_B_SEARCH_HELP_VAN"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZRECO_B_SEARCH_HELP_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZRECO_B_SEARCH_HELP_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZRECO_B_SEARCH_HELP_VAN.xml"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "zreco_adresfield-manage": {
+          "semanticObject": "zreco_adresfield",
+          "action": "manage",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.124.11",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zrecoadresfield.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "zrecoadresfield.view",
+        "async": true,
+        "viewPath": "zrecoadresfield.view"
+      },
+      "routes": [
+        {
+          "name": "worklist",
+          "pattern": ":?query:",
+          "target": [
+            "worklist"
+          ]
+        }
+      ],
+      "targets": {
+        "worklist": {
+          "id": "Worklist",
+          "name": "Worklist"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "zrecoadresfield.view.App",
+      "type": "XML",
+      "id": "App"
+    }
+  }
+}
