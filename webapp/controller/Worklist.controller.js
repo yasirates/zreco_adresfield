@@ -152,7 +152,7 @@ sap.ui.define([
            this._createPostRequet( reqUrl, sData.ADRC_RADIO,
                 function (oResponse) {
                     debugger;
-                    sap.m.MessageToast.show("Tamamlandı!");
+                    sap.m.MessageToast.show(oResponse);
                 }
             );
         },
