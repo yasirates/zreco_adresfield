@@ -69,7 +69,9 @@ sap.ui.define([
                 .fail(function (oError) {
                     sap.ui.core.BusyIndicator.hide();
                     sap.m.MessageBox.error("Hata Oluştu: " + oError.responseText);
-                    failEvent(oError);
+					if (failEvent){
+						failEvent(oError);
+					}
                 })
                 .always(function () {
                     sap.ui.core.BusyIndicator.hide();
@@ -97,7 +99,9 @@ sap.ui.define([
                 .fail(function (oError) {
                     sap.ui.core.BusyIndicator.hide();
                     sap.m.MessageBox.error("Hata Oluştu: " + oError.responseText);
-                    failEvent(oError);
+					if (failEvent){
+						failEvent(oError);
+					}
                 })
                 .always(function () {
                     sap.ui.core.BusyIndicator.hide();
